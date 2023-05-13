@@ -1,42 +1,98 @@
 #root {
+  --black: #171719;
+  --white: #ffffff;
+  --red:#e53131;
+  
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 0 0;
+  padding: 0rem;
+  /* text-align: center; */
+}
+*{
+    margin: 0 0;
+    padding: 0rem;
+}
+/* .brand{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10%;
+}
+.brand > h1 {
+  color: var(--red);
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: "MuseoModerno", cursive;
+}
+.brand>img.logo {
+  max-width: 100px;
+  max-height: 100px;
+} */
+/* Home */
+.homeCard {
+  display: flex;
+  align-items: center;
+  background-color: var(--black);
+}
+.homeImageSlider {
+  /* border: 1px solid red; */
+  width: 45%;
+  height: 99vh;
+}
+.homeStart {
+  width: 55%;
+  height: 99vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+
+}
+.homeStart > .nav {
+  /* border: 1px solid red; */
+  border-bottom: 1px solid var(--red);
+  border-top: 1px solid var(--white);
+  margin: 2% 5% 0 5%;
+  /* height: 100px; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+}
+.nav > p {
+  color: var(--white);
+  font-family: "Electrolize", sans-serif;
+  font-size: 1.2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.homeStart > .content {
+  /* border: 1px solid red; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.textCard{
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.textCard>h2{
+  color: var(--white);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.textCard>p{
+  color: var(--white);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 100%;
 }

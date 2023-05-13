@@ -1,0 +1,31 @@
+
+.myNavBar{
+    background-color: var(--black);
+}
+.navitems a,.navitems div {
+  font-family: "Electrolize", sans-serif;
+  font-size: 1.3rem;
+  color: var(--white);
+}
+.navitems a:hover,.navitems div:hover {
+    font-family: "Electrolize", sans-serif;
+    font-size: 1.3rem;
+    color: var(--red);
+  }
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10%;
+}
+.brand > h1 {
+  color: var(--red);
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: "MuseoModerno", cursive;
+}
+.brand > img.logo {
+  max-width: 100px;
+  max-height: 100px;
+}
