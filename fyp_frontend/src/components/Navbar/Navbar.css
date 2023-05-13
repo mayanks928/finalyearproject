@@ -2,16 +2,18 @@
 .myNavBar{
     background-color: var(--black);
 }
-.navitems a,.navitems div {
+.navitems>a,.navitems div {
   font-family: "Electrolize", sans-serif;
   font-size: 1.3rem;
   color: var(--white);
 }
-.navitems a:hover,.navitems div:hover {
-    font-family: "Electrolize", sans-serif;
-    font-size: 1.3rem;
-    color: var(--red);
+.navitems>div>a{
+  color: var(--white);
+}
+.navitems a:hover,.navitems div:hover,.nav-link.active,.navitems>.show{
+    color: var(--red) !important;
   }
+
 .brand {
   display: flex;
   justify-content: center;
