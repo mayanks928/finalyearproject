@@ -4,15 +4,26 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../../assets/logo2.png";
 import "./Navbar.css";
+import { useState,useEffect } from "react";
 export default function NavBar() {
+  const [showBreak, setShowBreak] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowBreak(window.innerWidth < 450);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <>
       <Navbar className="myNavBar" variant="dark"  expand="lg">
         <Container>
           <Navbar.Brand href="#home">
             <div className="brand">
-              <img className="logo" src={Logo} alt="AB" />
-              <h1>Picture Perfect</h1>
+              <img className="logo" src={Logo} alt="Picture Perfect Logo" />
+              <h1>Picture {showBreak && <br />}Perfect</h1>
             </div>
           </Navbar.Brand>
           <Navbar.Toggle className="navToggleOnSmall" aria-controls="basic-navbar-nav" />
