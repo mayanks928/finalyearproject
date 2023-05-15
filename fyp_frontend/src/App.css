@@ -1,7 +1,9 @@
 #root {
   --black: #171719;
   --white: #ffffff;
+  --red-white:#f9dfdf;
   --red:#e53131;
+  
   /* max-width: 1280px; */
   width: 100%;
   margin: 0 0;
@@ -13,38 +15,8 @@
     margin: 0 0;
     padding: 0rem;
 }
-/* .brand{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10%;
-}
-.brand > h1 {
-  color: var(--red);
-  text-align: center;
-  font-weight: 700;
-  font-size: 2rem;
-  font-family: "MuseoModerno", cursive;
-}
-.brand>img.logo {
-  max-width: 100px;
-  max-height: 100px;
-} */
+
 /* Home */
-.homeImage1{
-  padding: 10px;
-}
-.homeSlider1{
-  opacity: 0;
-  scale: 0;
-  /* transform: translateY(70%); */
-  transition: opacity 1s ease-in-out,scale 0.8s ease-in-out;
-}
-.homeSlider1.show{
-  /* transform: translateY(0%); */
-  scale: 1;
-  opacity: 1;
-}
 
 .content {
   /* border: 1px solid red; */
@@ -55,7 +27,7 @@
   align-items: center;
 }
 
-.textCard{
+/* .textCard{
   padding: 10%;
   display: flex;
   flex-direction: column;
@@ -71,6 +43,40 @@
 
 .textCard>p{
   color: var(--white);
-  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 1rem;
+} */
+
+.textTitleDiv>h2{
+  padding: 5% 5%;
+  color: var(--white);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bold;
+  font-size: calc(1.575rem + 3.3vw);
+  
+}
+.textTitleDiv>p{
+  padding: 1% 5%;
+  color: var(--red-white);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: calc(0.5rem + 1vw);
+}
+
+.textTitleDiv2>h3{
+  padding: 5% 5%;
+  color: var(--white);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bold;
+  font-size: calc(1.4rem + 2.7vw);
+}
+.textTitleDiv2>p{
+  padding: 1% 5%;
+  color: var(--red-white);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: calc(0.5rem + 1vw);
+}
+
+.whiteHr{
+  /* color: var(--white); */
+  border-top: 2px solid var(--red-white);
+
 }
