@@ -5,6 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../../assets/logo4.png";
 import "./Navbar.css";
 import { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 export default function NavBar() {
   const [showBreak, setShowBreak] = useState(false);
 
@@ -20,7 +21,7 @@ export default function NavBar() {
     <>
       <Navbar className="myNavBar" variant="dark"  expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <div className="brand">
               <img className="logo" src={Logo} alt="Picture Perfect Logo" />
               <h1>Picture {showBreak && <br />}Perfect</h1>
@@ -40,8 +41,8 @@ export default function NavBar() {
                   Inpainting
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#home">Create Account</Nav.Link>
-              <Nav.Link href="#link">Login</Nav.Link>
+              <Nav.Link as={Link} to="/register">Create Account</Nav.Link>
+              <Nav.Link as={Link} to="/login">Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

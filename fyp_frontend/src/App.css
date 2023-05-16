@@ -40,14 +40,14 @@
 }
 
 .textTitleDiv > h2 {
-  padding: 5% 5%;
+  padding: 3% 5%;
   color: var(--white);
   font-family: "Ostrich-Sans-Black", "Ostrich-Sans-Medium",
     "Fira Sans Condensed", sans-serif;
   font-size: calc(2rem + 3.5vw);
 }
 .textTitleDiv > p {
-  padding: 1% 5%;
+  padding: 0% 5%;
   color: var(--red-white);
   font-family: sans-serif;
   font-size: calc(0.7rem + 0.5vw);

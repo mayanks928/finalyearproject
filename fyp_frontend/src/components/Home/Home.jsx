@@ -2,9 +2,10 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Myimageslider from "../Myimageslider/Myimageslider"
+import './Home.css'
 export default function Home() {
     return <Container lg>
-      <Row className="py-4 justify-content-md-center">
+      <Row className="py-4 justify-content-md-center homeCard">
         <Col md={12} lg={5} className="homeImage1">
           <Myimageslider width={"auto"} height={"450px"} />
         </Col>

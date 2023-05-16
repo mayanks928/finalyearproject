@@ -1,0 +1,6 @@
+.homeCard{
+    background-image: url("../../assets/bbblurry.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 20px 8px var(--black) inset;
+}
