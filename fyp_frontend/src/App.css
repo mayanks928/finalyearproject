@@ -1,9 +1,9 @@
 #root {
   --black: #171719;
   --white: #ffffff;
-  --red-white:#f9dfdf;
-  --red:#e53131;
-  
+  --red-white: #f9dfdf;
+  --red: #e53131;
+
   /* max-width: 1280px; */
   width: 100%;
   margin: 0 0;
@@ -11,9 +11,21 @@
   text-align: center;
   background-color: var(--black);
 }
-*{
-    margin: 0 0;
-    padding: 0rem;
+@font-face {
+  font-family: "Ostrich-Sans-Bold";
+  src: url("./fonts/OstrichSans-Bold.otf");
+}
+@font-face {
+  font-family: "Ostrich-Sans-Medium";
+  src: url("./fonts/OstrichSans-Medium.otf");
+}
+@font-face {
+  font-family: "Ostrich-Sans-Black";
+  src: url("./fonts/OstrichSans-Black.otf");
+}
+* {
+  margin: 0 0;
+  padding: 0rem;
 }
 
 /* Home */
@@ -27,56 +39,36 @@
   align-items: center;
 }
 
-/* .textCard{
-  padding: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-family: 'Fira Sans Condensed', sans-serif;
-}
-.textCard>h2{
-  font-size: 4rem;
-  font-weight: bold;
-}
-
-.textCard>p{
-  color: var(--white);
-  font-size: 1rem;
-} */
-
-.textTitleDiv>h2{
+.textTitleDiv > h2 {
   padding: 5% 5%;
   color: var(--white);
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-weight: bold;
-  font-size: calc(1.575rem + 3.3vw);
-  
+  font-family: "Ostrich-Sans-Black", "Ostrich-Sans-Medium",
+    "Fira Sans Condensed", sans-serif;
+  font-size: calc(2rem + 3.5vw);
 }
-.textTitleDiv>p{
+.textTitleDiv > p {
   padding: 1% 5%;
   color: var(--red-white);
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: calc(0.5rem + 1vw);
+  font-family: sans-serif;
+  font-size: calc(0.7rem + 0.5vw);
 }
 
-.textTitleDiv2>h3{
+.textTitleDiv2 > h3 {
   padding: 5% 5%;
   color: var(--white);
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: bold;
   font-size: calc(1.4rem + 2.7vw);
 }
-.textTitleDiv2>p{
+.textTitleDiv2 > p {
   padding: 1% 5%;
   color: var(--red-white);
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: calc(0.5rem + 1vw);
+  font-family: sans-serif;
+  /* font-size: calc(0.5rem + 1vw); */
+  font-size: calc(0.7rem + 0.5vw);
 }
 
-.whiteHr{
+.whiteHr {
   /* color: var(--white); */
   border-top: 2px solid var(--red-white);
-
 }
