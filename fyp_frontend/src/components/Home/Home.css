@@ -1,6 +1,9 @@
-.homeCard{
-    background-image: url("../../assets/bbblurry.svg");
+.homeCardParent{
+    background-image: url("../../assets/ffflux.svg");
     background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow: 0 0 20px 8px var(--black) inset;
+}
+.homeCard{
+    /* background-image: url("../../assets/ttten1.svg"); */
+    /* background-color: rgb(91, 19, 19); */
+    /* box-shadow: 0 0 20px 8px var(--black) inset; */
 }

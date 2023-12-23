@@ -41,7 +41,7 @@ export default function NavBar() {
                   Inpainting
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={Link} to="/register">Create Account</Nav.Link>
+              <Nav.Link as={Link} to="/create-account">Create Account</Nav.Link>
               <Nav.Link as={Link} to="/login">Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -1,5 +1,5 @@
 #root {
-  --black: #171719;
+  --black: #000000;
   --white: #ffffff;
   --red-white: #f9dfdf;
   --red: #e53131;
@@ -71,4 +71,5 @@
 .whiteHr {
   /* color: var(--white); */
   border-top: 2px solid var(--red-white);
+  margin: 1px;
 }

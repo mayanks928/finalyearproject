@@ -15,7 +15,7 @@ export default function Myimageslider(props) {
       handle={
         <ReactCompareSliderHandle
           buttonStyle={{ display: "none" }}
-          linesStyle={{ width: 0 }}
+          linesStyle={{ width: "1px" }}
         />
       }
       changePositionOnHover={true}
@@ -23,21 +23,28 @@ export default function Myimageslider(props) {
       itemOne={
         <ReactCompareSliderImage
           alt="Image one"
-          src="https://images.unsplash.com/photo-1438401171849-74ac270044ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1784&q=70"
+          src="src\assets\mountainnoised.jpg"
+          style={{
+            width: props.width,
+            maxHeight: props.height,
+            objectPosition: "50% 50%",
+            display: "",
+          }}
         />
       }
       itemTwo={
         <ReactCompareSliderImage
           alt="Image two"
-          src="https://images.unsplash.com/photo-1437809781432-a957377661ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1784&q=70"
-          style={{ transform: "scale(1.125)" }}
+          src="src\assets\mountain.jpg"
+          style={{
+            width: props.width,
+            maxHeight: props.height,
+            objectPosition: "50% 50%",
+            display: "",
+          }}
         />
       }
       position={50}
-      style={{
-        height: props.height,
-        maxwidth: props.width,
-      }}
     />
   );
 }
