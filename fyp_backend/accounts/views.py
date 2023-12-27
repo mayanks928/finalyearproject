@@ -54,8 +54,8 @@ class SignUpView(APIView):
                     user = User.objects.create_user(
                         email=email,
                         password=password,
-                        firstName=firstName,
-                        lastName=lastName,
+                        first_name=firstName,
+                        last_name=lastName,
                     )
                     return Response({"success": "User created successfully"})
 

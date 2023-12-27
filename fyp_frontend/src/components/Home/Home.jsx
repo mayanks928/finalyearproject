@@ -5,7 +5,7 @@ import Myimageslider from "../Myimageslider/Myimageslider";
 import "./Home.css";
 export default function Home() {
   return (
-    <Container fluid>
+    <Container fluid>    
       <Row className="homeCardParent py-4 justify-content-md-center">
         <Col
           md={12}
@@ -17,9 +17,9 @@ export default function Home() {
             <p>
               Enhance the clarity of your images with our AI-driven image
               processing techniques. Whether your image is too noisy or you
-              require a higher resolution, let our models transform
-              your visuals to meet your exact specifications. Elevate the
-              quality of your images with our cutting-edge technology.
+              require a higher resolution, let our models transform your visuals
+              to meet your exact specifications. Elevate the quality of your
+              images with our cutting-edge technology.
             </p>
           </div>
         </Col>

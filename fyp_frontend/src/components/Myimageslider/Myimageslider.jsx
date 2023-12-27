@@ -2,6 +2,8 @@ import { ReactCompareSliderImage } from "react-compare-slider";
 import { ReactCompareSlider } from "react-compare-slider";
 import { ReactCompareSliderHandle } from "react-compare-slider";
 import { useState, useEffect } from "react";
+import SampleImage from "../../assets/mountain.jpg";
+import SampleImageNoised from "../../assets/mountainnoised.jpg";
 import "./Myimageslider.css";
 import PropTypes from "prop-types";
 export default function Myimageslider(props) {
@@ -23,7 +25,7 @@ export default function Myimageslider(props) {
       itemOne={
         <ReactCompareSliderImage
           alt="Image one"
-          src="src\assets\mountainnoised.jpg"
+          src={SampleImageNoised}
           style={{
             width: props.width,
             maxHeight: props.height,
@@ -35,7 +37,7 @@ export default function Myimageslider(props) {
       itemTwo={
         <ReactCompareSliderImage
           alt="Image two"
-          src="src\assets\mountain.jpg"
+          src={SampleImage}
           style={{
             width: props.width,
             maxHeight: props.height,

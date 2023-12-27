@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rd /s/q \"../fyp_backend/build\" & vite build --base=/ && xcopy /E /I dist \"../fyp_backend/build\"",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

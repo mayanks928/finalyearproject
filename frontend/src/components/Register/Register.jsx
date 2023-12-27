@@ -7,8 +7,11 @@ import Button from "react-bootstrap/Button";
 import { Navigate } from "react-router-dom";
 // import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import CSRFToken from "../CSRFToken";
+
 // import InputGroup from "react-bootstrap/InputGroup";
 // import Row from "react-bootstrap/Row";
+// eslint-disable-next-line react/prop-types
 const Register = ({ register }) => {
   const [errors, setErrors] = useState({});
   const [signupFormData, setSignupFormData] = useState({
@@ -64,18 +67,16 @@ const Register = ({ register }) => {
       // We got errors!
       setErrors(newErrors);
     } else {
-      // No errors! Put any logic here for the form submission!
-      // alert("No errors");
-      // console.log(signupFormData);
       register(email, password, confirmPassword, firstName, lastName);
       setAccountCreated(true);
     }
   }
-  if (accountCreated) return <Navigate to="/" />;
+  if (accountCreated) return <Navigate to="/login" />;
   return (
     <div className="registrationCard">
       <div className="registrationForm">
         <Form onSubmit={handleSubmitForSignup}>
+          <CSRFToken />
           <Form.Group className="mb-4">
             <Form.Label>First Name</Form.Label>
             <Form.Control
