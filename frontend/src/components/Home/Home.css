@@ -1,0 +1,9 @@
+.homeCardParent{
+    background-image: url("../../assets/ffflux.svg");
+    background-size: cover;
+}
+.homeCard{
+    /* background-image: url("../../assets/ttten1.svg"); */
+    /* background-color: rgb(91, 19, 19); */
+    /* box-shadow: 0 0 20px 8px var(--black) inset; */
+}

@@ -37,25 +37,25 @@ class SignUpView(APIView):
         data = self.request.data
 
         email = data["email"]
-        first_name = data["first_name"]
-        last_name = data["last_name"]
+        firstName = data["firstName"]
+        lastName = data["lastName"]
         password = data["password"]
-        re_password = data["re_password"]
+        confirmPassword = data["confirmPassword"]
 
         try:
             validate_email(email)
         except ValidationError as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            if password == re_password:
+            if password == confirmPassword:
                 if User.objects.filter(email=email).exists():
                     return Response({"error": "Account with same email already exists"})
                 else:
                     user = User.objects.create_user(
                         email=email,
                         password=password,
-                        first_name=first_name,
-                        last_name=last_name,
+                        firstName=firstName,
+                        lastName=lastName,
                     )
                     return Response({"success": "User created successfully"})
 

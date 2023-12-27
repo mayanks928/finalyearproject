@@ -1,0 +1,15 @@
+.homeImage1{
+    padding: 10px;
+  }
+  .homeSlider1{
+    opacity: 0;
+    scale: 0;
+    transition: opacity 1.5s ease-in-out,scale 1.5s ease-in-out;
+  }
+  .homeSlider1.show{
+    /* -webkit-box-shadow: 0px 0px 20px 0px var(--red); */
+    /* -moz-box-shadow: 0px 0px 20px 0px var(--red); */
+    /* box-shadow: 0px 0px 20px 0px var(--red); */
+    scale: 1;
+    opacity: 1;
+  }
