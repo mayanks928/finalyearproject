@@ -1,16 +1,12 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { useState } from "react";
 import "./Register.css";
-import { register } from "../../actions/auth";
-import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { Navigate } from "react-router-dom";
 // import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import CSRFToken from "../CSRFToken";
 
-// import InputGroup from "react-bootstrap/InputGroup";
-// import Row from "react-bootstrap/Row";
 // eslint-disable-next-line react/prop-types
 const Register = ({ register }) => {
   const [errors, setErrors] = useState({});
@@ -67,7 +63,7 @@ const Register = ({ register }) => {
       // We got errors!
       setErrors(newErrors);
     } else {
-      register(email, password, confirmPassword, firstName, lastName);
+      // register(email, password, confirmPassword, firstName, lastName);
       setAccountCreated(true);
     }
   }
@@ -76,7 +72,6 @@ const Register = ({ register }) => {
     <div className="registrationCard">
       <div className="registrationForm">
         <Form onSubmit={handleSubmitForSignup}>
-          <CSRFToken />
           <Form.Group className="mb-4">
             <Form.Label>First Name</Form.Label>
             <Form.Control
@@ -149,4 +144,4 @@ const Register = ({ register }) => {
   );
 };
 
-export default connect(null, { register })(Register);
+export default Register;

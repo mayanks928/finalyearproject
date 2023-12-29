@@ -6,11 +6,8 @@ import NavBar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 
-import { Provider } from "react-redux";
-import store from "./store";
 function App() {
   return (
-    <Provider store={store}>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -19,7 +16,6 @@ function App() {
           <Route path="/create-account" element={<Register />} />
         </Routes>
       </BrowserRouter>
-    </Provider>
   );
 }
 

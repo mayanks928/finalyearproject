@@ -13,25 +13,7 @@ from rest_framework import status
 User = get_user_model()
 
 
-@method_decorator(csrf_protect, name="dispatch")
-class CheckAuthenticatedView(APIView):
-    def get(self, request, format=None):
-        try:
-            isAuthenticated = request.user.is_authenticated
-
-            if isAuthenticated:
-                return Response({"isAuthenticated": "success"})
-            else:
-                return Response({"isAuthenticated": "error"})
-        except:
-            return Response(
-                {"error": "Something went wrong while checking authentication status"}
-            )
-
-
-@method_decorator(csrf_protect, name="dispatch")
 class SignUpView(APIView):
-    permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
         data = self.request.data
@@ -64,8 +46,6 @@ class SignUpView(APIView):
         except:
             return Response({"error": "Something went wrong during sign-up"})
 
-
-@method_decorator(csrf_protect, name="dispatch")
 class LoginView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -95,15 +75,6 @@ class LogoutView(APIView):
         except:
             return Response({"error": "Something went wrong while logging out"})
 
-
-@method_decorator(ensure_csrf_cookie, name="dispatch")
-class GetCSRFToken(APIView):
-    permission_classes = (permissions.AllowAny,)
-
-    def get(self, request, format=None):
-        return Response({"success": "CSRF cookie set"})
-
-
 class DeleteAccountView(APIView):
     def delete(self, request, format=None):
         user = self.request.user
@@ -114,7 +85,6 @@ class DeleteAccountView(APIView):
             return Response(
                 {"error": "Something went wrong while trying to delete user"}
             )
-
 
 class GetUsersView(APIView):
     permission_classes = (permissions.AllowAny,)
