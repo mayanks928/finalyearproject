@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SignUpView,GetCSRFToken,LoginView,LogoutView,CheckAuthenticatedView,DeleteAccountView,GetUsersView
+from .views import SignUpView,LoginView,LogoutView,DeleteAccountView,GetUsersView
 
 urlpatterns = [
     path('login',LoginView.as_view()),
