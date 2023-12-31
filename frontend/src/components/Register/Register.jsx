@@ -12,7 +12,7 @@ import CSRFToken from "../CSRFToken";
 // import InputGroup from "react-bootstrap/InputGroup";
 // import Row from "react-bootstrap/Row";
 // eslint-disable-next-line react/prop-types
-const Register = ({ register }) => {
+const Register = ({ register, isAuthenticated }) => {
   const [errors, setErrors] = useState({});
   const [signupFormData, setSignupFormData] = useState({
     firstName: "",
@@ -71,7 +71,9 @@ const Register = ({ register }) => {
       setAccountCreated(true);
     }
   }
-  if (accountCreated) return <Navigate to="/login" />;
+  if (isAuthenticated) return <Navigate to="/" />;
+  else if (accountCreated) return <Navigate to="/login" />;
+  
   return (
     <div className="registrationCard">
       <div className="registrationForm">
@@ -148,5 +150,7 @@ const Register = ({ register }) => {
     </div>
   );
 };
-
-export default connect(null, { register })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { register })(Register);

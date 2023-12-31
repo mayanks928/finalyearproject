@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Login.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { login } from "../../actions/auth";
+import { connect } from "react-redux";
+import CSRFToken from "../CSRFToken";
+import { Navigate } from "react-router-dom";
 
-export default function Login() {
+const Login = ({ login, isAuthenticated }) => {
   const [errors, setErrors] = useState({});
   const [loginFormData, setLoginFormData] = useState({
     email: "",
@@ -31,7 +35,7 @@ export default function Login() {
         [name]: null,
       });
   }
-
+  const { email, password } = loginFormData;
   function handleSubmitForLogin(event) {
     event.preventDefault();
     const newErrors = findFormErrors();
@@ -40,14 +44,16 @@ export default function Login() {
       setErrors(newErrors);
     } else {
       // No errors! Put any logic here for the form submission!
-      alert("No errors");
-      console.log(loginFormData);
+      // alert("No errors");
+      login(email, password);
     }
   }
+  if (isAuthenticated) return <Navigate to="/" />;
   return (
     <div className="loginCard">
       <div className="loginForm">
         <Form onSubmit={handleSubmitForLogin}>
+          <CSRFToken />
           <Form.Group className="mb-4">
             <Form.Label>Email Id</Form.Label>
             <Form.Control
@@ -81,4 +87,9 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { login })(Login);
