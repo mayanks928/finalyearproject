@@ -6,6 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
+  AUTHENTICATED_SUCCESS,
+  AUTHENTICATED_FAIL,
 } from "./types";
 import Cookies from "js-cookie";
 
@@ -83,8 +85,8 @@ export const login = (email, password) => async (dispatch) => {
     } else {
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data.email,
       });
+      dispatch(checkAuthenticated());
     }
   } catch (err) {
     console.error("Error:", err);
@@ -109,7 +111,7 @@ export const logout = () => async (dispatch) => {
   const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/logout`;
   console.log("Request URL:", apiUrl);
   try {
-    const res = await axios.post(apiUrl,{}, config);
+    const res = await axios.post(apiUrl, {}, config);
 
     if (res.data.error) {
       console.error("Error:", res.data.error);
@@ -125,6 +127,46 @@ export const logout = () => async (dispatch) => {
     console.error("Error:", err);
     dispatch({
       type: LOGOUT_FAIL,
+    });
+  }
+};
+
+export const checkAuthenticated = () => async (dispatch) => {
+  const csrfToken = Cookies.get("csrftoken");
+  console.log("checkAuthenticated-CSRF Token:", csrfToken);
+  const config = {
+    withCredentials: true,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  };
+
+  const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/authenticated`;
+  console.log("Request URL:", apiUrl);
+  try {
+    const res = await axios.get(apiUrl, config);
+    if (res.data.error || res.data.isAuthenticated === "error") {
+      dispatch({
+        type: AUTHENTICATED_FAIL,
+        authentication_payload: false,
+      });
+    } else if (res.data.isAuthenticated === "success") {
+      dispatch({
+        type: AUTHENTICATED_SUCCESS,
+        authentication_payload: true,
+        userData_payload: res.data.user_data,
+      });
+    } else {
+      dispatch({
+        type: AUTHENTICATED_FAIL,
+        authentication_payload: false,
+      });
+    }
+  } catch (err) {
+    dispatch({
+      type: AUTHENTICATED_FAIL,
+      authentication_payload: false,
     });
   }
 };

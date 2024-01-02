@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.response import Response
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
+from .models import UserAccount
 from django.contrib import auth
 from .serializers import UserSerializer
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
@@ -10,18 +11,17 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from rest_framework import status
 
-User = get_user_model()
 
-
-@method_decorator(csrf_protect, name="dispatch")
 class CheckAuthenticatedView(APIView):
     def get(self, request, format=None):
         user=self.request.user
+        # user_data = UserAccount.objects.get(email=user)
+        user_data = UserSerializer(user)
         try:
             isAuthenticated = user.is_authenticated
 
             if isAuthenticated:
-                return Response({"isAuthenticated": "success"})
+                return Response({"isAuthenticated": "success","user_data":user_data.data})
             else:
                 return Response({"isAuthenticated": "error"})
         except:
@@ -49,10 +49,10 @@ class SignUpView(APIView):
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         try:
             if password == confirmPassword:
-                if User.objects.filter(email=email).exists():
+                if UserAccount.objects.filter(email=email).exists():
                     return Response({"error": "Account with same email already exists"})
                 else:
-                    user = User.objects.create_user(
+                    user = UserAccount.objects.create_user(
                         email=email,
                         password=password,
                         first_name=firstName,
@@ -81,7 +81,7 @@ class LoginView(APIView):
 
             if user is not None:
                 auth.login(request, user)
-                return Response({"success": "User authenticated", "email": email})
+                return Response({"success": "User authenticated"})
             else:
                 return Response({"error": "Error Authenticating"})
         except:
@@ -109,7 +109,7 @@ class DeleteAccountView(APIView):
     def delete(self, request, format=None):
         user = self.request.user
         try:
-            user = User.objects.filter(id=user.id).delete()
+            user = UserAccount.objects.filter(id=user.id).delete()
             return Response({"success": "User deleted successfully"})
         except:
             return Response(
@@ -121,6 +121,6 @@ class GetUsersView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def get(self, request, format=None):
-        users = User.objects.all()
+        users = UserAccount.objects.all()
         users = UserSerializer(users, many=True)
         return Response(users.data)

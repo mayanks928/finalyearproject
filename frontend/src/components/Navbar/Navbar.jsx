@@ -24,9 +24,9 @@ const NavBar = ({ logout, isAuthenticated }) => {
 
   const AuthLinks = (
     <Fragment>
-      {/* <a onClick={logout} href="/login">
-        Logout
-      </a> */}
+      <Nav.Link as={Link} to="/gallery">
+        Gallery
+      </Nav.Link>
       <Nav.Link onClick={logout} as={Link} to="/login">
         Logout
       </Nav.Link>
@@ -59,22 +59,16 @@ const NavBar = ({ logout, isAuthenticated }) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto navitems">
               <NavDropdown title="Tools" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Image Deblur
+                <NavDropdown.Item as={Link} to="/colorization">
+                  Colorization
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item as={Link} to="/superresolution">
                   Super Resolution
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
+                <NavDropdown.Item as={Link} to="/inpainting">
                   Inpainting
                 </NavDropdown.Item>
               </NavDropdown>
-              {/* <Nav.Link as={Link} to="/create-account">
-                Create Account
-              </Nav.Link>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link> */}
               {isAuthenticated ? AuthLinks : GuestLinks}
             </Nav>
           </Navbar.Collapse>
