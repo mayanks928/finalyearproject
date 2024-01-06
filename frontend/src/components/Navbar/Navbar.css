@@ -1,19 +1,24 @@
-
-.myNavBar{
-    background-color: var(--black);
+.myNavBar {
+  background-color: var(--black);
 }
-.navitems>a,.navitems div {
+.navitems > a,
+.navitems div {
   font-family: "Electrolize", sans-serif;
   font-size: 1.3rem;
   color: var(--white);
 }
-.navitems>div>a{
+.navitems > div > a {
   color: var(--white);
 }
-.navitems a:hover,.navitems div:hover,.nav-link.active,.navitems>.show{
-    color: var(--red) !important;
-  }
+.navitems a:hover,
+.navitems div:hover,
 
+.navitems > .show {
+  color: var(--red) !important;
+}
+.nav-link.active{
+  color: var(--white) !important;
+}
 .brand {
   display: flex;
   justify-content: center;

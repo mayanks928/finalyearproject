@@ -5,12 +5,11 @@ import { register } from "../../actions/auth";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { Navigate } from "react-router-dom";
-// import Col from "react-bootstrap/Col";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import CSRFToken from "../CSRFToken";
+import Row from "react-bootstrap/Row";
 
-// import InputGroup from "react-bootstrap/InputGroup";
-// import Row from "react-bootstrap/Row";
 // eslint-disable-next-line react/prop-types
 const Register = ({ register, isAuthenticated }) => {
   const [errors, setErrors] = useState({});
@@ -73,54 +72,64 @@ const Register = ({ register, isAuthenticated }) => {
   }
   if (isAuthenticated) return <Navigate to="/" />;
   else if (accountCreated) return <Navigate to="/login" />;
-  
+
   return (
     <div className="registrationCard">
       <div className="registrationForm">
         <Form onSubmit={handleSubmitForSignup}>
           <CSRFToken />
-          <Form.Group className="mb-4">
-            <Form.Label>First Name</Form.Label>
+          <Row>
+            <Col md>
+          <Form.Group className="mb-5">
+            {/* <Form.Label>First Name</Form.Label> */}
             <Form.Control
               type="text"
               onChange={handleInputChangeForSignup}
               name="firstName"
+              placeholder="First name"
               isInvalid={!!errors.firstName}
             />
             <Form.Control.Feedback type="invalid">
               {errors.firstName}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Label>Last Name</Form.Label>
+          </Col>
+          <Col md>
+          <Form.Group className="mb-5">
+            {/* <Form.Label>Last Name</Form.Label> */}
             <Form.Control
               type="text"
               onChange={handleInputChangeForSignup}
               name="lastName"
+              placeholder="Last name"
               isInvalid={!!errors.lastName}
             />
             <Form.Control.Feedback type="invalid">
               {errors.lastName}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Label>Email Id</Form.Label>
+          </Col>
+          </Row>
+          <Form.Group className="mb-5">
+            {/* <Form.Label>Email Id</Form.Label> */}
             <Form.Control
               type="email"
               onChange={handleInputChangeForSignup}
               name="email"
+              placeholder="Email ID"
               isInvalid={!!errors.email}
             />
             <Form.Control.Feedback type="invalid">
               {errors.email}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Label>Password</Form.Label>
+          <Form.Group className="mb-5">
+            {/* <Form.Label>Password</Form.Label> */}
             <Form.Control
               type="password"
               onChange={handleInputChangeForSignup}
               name="password"
+              placeholder="Password"
               minLength={8}
               isInvalid={!!errors.password}
             />
@@ -128,12 +137,13 @@ const Register = ({ register, isAuthenticated }) => {
               {errors.password}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Label>Confirm Password</Form.Label>
+          <Form.Group className="mb-5">
+            {/* <Form.Label>Confirm Password</Form.Label> */}
             <Form.Control
               type="password"
               onChange={handleInputChangeForSignup}
               name="confirmPassword"
+              placeholder="Re-Enter Password"
               minLength={8}
               isInvalid={!!errors.confirmPassword}
             />

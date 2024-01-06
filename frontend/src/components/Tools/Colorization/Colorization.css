@@ -1,0 +1,36 @@
+.colorizationForm {
+  padding: 0 0 1.5vh 0;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  margin: 2vh 3vw;
+}
+.colorizationForm .form-group {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+}
+.colorizationForm .form-label {
+  border-radius: 8px;
+  background-color: rgb(208, 195, 195);
+  width: 100%;
+  margin: 0;
+  padding: 2vh 0vh;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+}
+.colorizationForm .form-control {
+  background-color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 2vh 1.5vw;
+}
+.colorizationForm .form-control.is-invalid {
+  border-color: rgb(223, 219, 219);
+}
+
+.colorizationForm .img-preview {
+  max-width: 50%;
+  max-height: 50%;
+  padding: 1vh 1vw;
+  margin: 1vh 0;
+  border: 1px solid black;
+}

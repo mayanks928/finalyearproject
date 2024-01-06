@@ -3,10 +3,11 @@
   background-size: cover;
   padding: 2.5vh 0vw 1.5vh 1vw;
   display: flex;
+  
 }
 .registrationForm {
   background: rgba(255, 255, 255, 0.6);
-  padding: 5vh 2vw;
+  padding: 10vh 8vw;
   width: 50%;
 
   border-radius: 11px 11px 11px 11px;
@@ -14,7 +15,7 @@
   -moz-border-radius: 11px 11px 11px 11px;
 
   text-align: start;
-  font-family: sans-serif;
+  font-family: "Electrolize", sans-serif;
   font-size: calc(0.7rem + 0.5vw);
   /* display: flex; */
 }

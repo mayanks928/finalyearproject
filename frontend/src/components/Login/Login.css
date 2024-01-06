@@ -6,7 +6,7 @@
 }
 .loginForm {
   background: rgba(0, 0, 0, 0.7);
-  padding: 5vh 2vw;
+  padding: 10vh 8vw;
   width: 50%;
   height: 100vh;
 
@@ -15,7 +15,7 @@
   -moz-border-radius: 11px 11px 11px 11px;
 
   text-align: start;
-  font-family: sans-serif;
+  font-family: "Electrolize", sans-serif;
   font-size: calc(0.7rem + 0.5vw);
   color: var(--white);
 
