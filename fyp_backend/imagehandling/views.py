@@ -19,7 +19,7 @@ class UploadImageView(APIView):
             user=user,
             task_name=self.request.data["taskName"],
             input_image=input_image,
-            output_image=output_image  # replace with the processed image
+            output_image=input_image  # replace with the processed image
         )
 
         return Response({"success": "Image uploaded and processed successfully"})

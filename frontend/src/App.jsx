@@ -10,6 +10,8 @@ import SuperResolution from "./components/Tools/SuperResolution/SuperResolution"
 import Inpainting from "./components/Tools/Inpainting/Inpainting";
 import Gallery from "./components/Gallery/Gallery";
 import Layout from "./components/Layout/Layout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -28,6 +30,18 @@ function App() {
             <Route path="/inpainting" element={<Inpainting />} />
             <Route path="/gallery" element={<Gallery />} />
           </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </Layout>
       </BrowserRouter>
     </Provider>

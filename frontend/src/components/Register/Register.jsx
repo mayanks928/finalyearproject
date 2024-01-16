@@ -66,8 +66,7 @@ const Register = ({ register, isAuthenticated }) => {
       // We got errors!
       setErrors(newErrors);
     } else {
-      register(email, password, confirmPassword, firstName, lastName);
-      setAccountCreated(true);
+      register(email, password, confirmPassword, firstName, lastName,setAccountCreated);
     }
   }
   if (isAuthenticated) return <Navigate to="/" />;

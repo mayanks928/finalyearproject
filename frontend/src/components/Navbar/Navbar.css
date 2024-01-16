@@ -12,12 +12,15 @@
 }
 .navitems a:hover,
 .navitems div:hover,
-
 .navitems > .show {
   color: var(--red) !important;
 }
+
 .nav-link.active{
   color: var(--white) !important;
+}
+.dropdown-item:active {
+  background-color: var(--black);
 }
 .brand {
   display: flex;

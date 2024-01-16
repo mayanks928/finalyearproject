@@ -83,7 +83,7 @@ class LoginView(APIView):
                 auth.login(request, user)
                 return Response({"success": "User authenticated"})
             else:
-                return Response({"error": "Error Authenticating"})
+                return Response({"error": "Error Authenticating. Email/Password is incorrect."})
         except:
             return Response({"error": "Something went wrong when logging in"})
 

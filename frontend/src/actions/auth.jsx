@@ -10,12 +10,14 @@ import {
   AUTHENTICATED_FAIL,
 } from "./types";
 import Cookies from "js-cookie";
+import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 export const register =
-  (email, password, confirmPassword, firstName, lastName) =>
+  (email, password, confirmPassword, firstName, lastName,setAccountCreated) =>
   async (dispatch) => {
-    const csrfToken = Cookies.get("csrftoken");
-    console.log("Signup-CSRF Token:", csrfToken);
+    // const csrfToken = Cookies.get("csrftoken");
+    // console.log("Signup-CSRF Token:", csrfToken);
     const config = {
       withCredentials: true,
       headers: {
@@ -34,22 +36,26 @@ export const register =
     });
     // const apiUrl = `${process.env.VITE_APP_API_URL}/accounts/register`;
     const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/register`;
-    console.log("Request URL:", apiUrl);
+    // console.log("Request URL:", apiUrl);
     try {
       const res = await axios.post(apiUrl, body, config);
 
       if (res.data.error) {
-        console.error("Error:", res.data.error);
+        // console.error("Error:", res.data.error);
+        toast.error(`Registration failed. ${res.data.error}. Please try again.`);
         dispatch({
           type: REGISTER_FAIL,
         });
       } else {
+        toast.success("Registration successful!");
+        setAccountCreated(true);
         dispatch({
           type: REGISTER_SUCCESS,
         });
       }
     } catch (err) {
-      console.error("Error2:", err);
+      // console.error("Error:", err);
+      toast.error("Registration failed. Please try again.");
       dispatch({
         type: REGISTER_FAIL,
       });
@@ -57,8 +63,8 @@ export const register =
   };
 
 export const login = (email, password) => async (dispatch) => {
-  const csrfToken = Cookies.get("csrftoken");
-  console.log("Login-CSRF Token:", csrfToken);
+  // const csrfToken = Cookies.get("csrftoken");
+  // console.log("Login-CSRF Token:", csrfToken);
   const config = {
     withCredentials: true,
     headers: {
@@ -73,23 +79,26 @@ export const login = (email, password) => async (dispatch) => {
     password,
   });
   const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/login`;
-  console.log("Request URL:", apiUrl);
+  // console.log("Request URL:", apiUrl);
   try {
     const res = await axios.post(apiUrl, body, config);
 
     if (res.data.error) {
-      console.error("Error:", res.data.error);
+      // console.error("Error:", res.data.error);
+      toast.error(`${res.data.error}. Try Again.`);
       dispatch({
         type: LOGIN_FAIL,
       });
     } else {
+      toast.success("Successfully logged in.");
       dispatch({
         type: LOGIN_SUCCESS,
       });
       dispatch(checkAuthenticated());
     }
   } catch (err) {
-    console.error("Error:", err);
+    toast.error(`${err}. Try Again.`);
+    // console.error("Error:", err);
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -97,8 +106,8 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const csrfToken = Cookies.get("csrftoken");
-  console.log("Logout-CSRF Token:", csrfToken);
+  // const csrfToken = Cookies.get("csrftoken");
+  // console.log("Logout-CSRF Token:", csrfToken);
   const config = {
     withCredentials: true,
     headers: {
@@ -109,12 +118,13 @@ export const logout = () => async (dispatch) => {
   };
 
   const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/logout`;
-  console.log("Request URL:", apiUrl);
+  // console.log("Request URL:", apiUrl);
   try {
     const res = await axios.post(apiUrl, {}, config);
 
     if (res.data.error) {
-      console.error("Error:", res.data.error);
+      toast.error(`${res.data.error}. Try Again.`);
+      // console.error("Error:", res.data.error);
       dispatch({
         type: LOGOUT_FAIL,
       });
@@ -124,7 +134,8 @@ export const logout = () => async (dispatch) => {
       });
     }
   } catch (err) {
-    console.error("Error:", err);
+    toast.success("Successfully logged out.");
+    // console.error("Error:", err);
     dispatch({
       type: LOGOUT_FAIL,
     });
@@ -132,8 +143,8 @@ export const logout = () => async (dispatch) => {
 };
 
 export const checkAuthenticated = () => async (dispatch) => {
-  const csrfToken = Cookies.get("csrftoken");
-  console.log("checkAuthenticated-CSRF Token:", csrfToken);
+  // const csrfToken = Cookies.get("csrftoken");
+  // console.log("checkAuthenticated-CSRF Token:", csrfToken);
   const config = {
     withCredentials: true,
     headers: {
@@ -143,7 +154,7 @@ export const checkAuthenticated = () => async (dispatch) => {
   };
 
   const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/authenticated`;
-  console.log("Request URL:", apiUrl);
+  // console.log("Request URL:", apiUrl);
   try {
     const res = await axios.get(apiUrl, config);
     if (res.data.error || res.data.isAuthenticated === "error") {
