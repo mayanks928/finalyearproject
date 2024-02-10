@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home/Home";
 import NavBar from "./components/Navbar/Navbar";
@@ -12,16 +12,18 @@ import Gallery from "./components/Gallery/Gallery";
 import Layout from "./components/Layout/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AnimatePresence } from "framer-motion";
 import { Provider } from "react-redux";
 import store from "./store";
+
 function App() {
+  const location = useLocation();
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Layout>
-          <NavBar />
-          <Routes>
+      <Layout>
+        <NavBar/>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
             <Route exact path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<Register />} />
@@ -29,21 +31,22 @@ function App() {
             <Route path="/superresolution" element={<SuperResolution />} />
             <Route path="/inpainting" element={<Inpainting />} />
             <Route path="/gallery" element={<Gallery />} />
+            
           </Routes>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-          />
-        </Layout>
-      </BrowserRouter>
+        </AnimatePresence>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </Layout>
     </Provider>
   );
 }

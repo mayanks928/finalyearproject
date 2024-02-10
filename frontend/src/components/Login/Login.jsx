@@ -6,6 +6,7 @@ import { login } from "../../actions/auth";
 import { connect } from "react-redux";
 import CSRFToken from "../CSRFToken";
 import { Navigate } from "react-router-dom";
+import PageTransition from "../../PageTransition";
 
 const Login = ({ login, isAuthenticated }) => {
   const [errors, setErrors] = useState({});
@@ -50,42 +51,44 @@ const Login = ({ login, isAuthenticated }) => {
   }
   if (isAuthenticated) return <Navigate to="/" />;
   return (
-    <div className="loginCard">
-      <div className="loginForm">
-        <Form onSubmit={handleSubmitForLogin}>
-          <CSRFToken />
-          <Form.Group className="mb-4">
-            <Form.Label>Email Id</Form.Label>
-            <Form.Control
-              type="email"
-              onChange={handleInputChangeForLogin}
-              name="email"
-              isInvalid={!!errors.email}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.email}
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              onChange={handleInputChangeForLogin}
-              name="password"
-              isInvalid={!!errors.password}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.password}
-            </Form.Control.Feedback>
-          </Form.Group>
+    <PageTransition>
+      <div className="loginCard">
+        <div className="loginForm">
+          <Form onSubmit={handleSubmitForLogin}>
+            <CSRFToken />
+            <Form.Group className="mb-4">
+              <Form.Control
+                type="email"
+                onChange={handleInputChangeForLogin}
+                name="email"
+                placeholder="Email Id"
+                isInvalid={!!errors.email}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-4">
+              <Form.Control
+                type="password"
+                onChange={handleInputChangeForLogin}
+                name="password"
+                placeholder="Password"
+                isInvalid={!!errors.password}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.password}
+              </Form.Control.Feedback>
+            </Form.Group>
 
-          <Button type="submit">Login</Button>
-        </Form>
+            <Button type="submit">Login</Button>
+          </Form>
+        </div>
+        <div className="loginText enlarge-shrink-text">
+          <p>Login to your existing account</p>
+        </div>
       </div>
-      <div className="loginText enlarge-shrink-text">
-        <p>Login to your existing account</p>
-      </div>
-    </div>
+    </PageTransition>
   );
 };
 

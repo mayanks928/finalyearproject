@@ -1,6 +1,6 @@
 .toolCard {
-  background-image: url("../../assets/ffflux.svg");
-  background-size: cover;
+  /* background-image: url("../../assets/ffflux.svg"); */
+  /* background-size: cover; */
   min-height: 80%;
   display: flex;
   flex-direction: column;

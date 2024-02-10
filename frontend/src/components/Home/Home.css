@@ -1,7 +1,8 @@
-.homeCardParent{
-    background-image: url("../../assets/ffflux.svg");
-    background-size: cover;
+.alternateHomeCard{
+    background-image: url("../../assets/ttten1.svg");
+    background-color: var(--black)
 }
+
 .homeCard{
     /* background-image: url("../../assets/ttten1.svg"); */
     /* background-color: rgb(91, 19, 19); */

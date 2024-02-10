@@ -129,12 +129,13 @@ export const logout = () => async (dispatch) => {
         type: LOGOUT_FAIL,
       });
     } else {
+      toast.success("Successfully logged out.");
       dispatch({
         type: LOGOUT_SUCCESS,
       });
     }
   } catch (err) {
-    toast.success("Successfully logged out.");
+    
     // console.error("Error:", err);
     dispatch({
       type: LOGOUT_FAIL,

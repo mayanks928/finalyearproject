@@ -1,6 +1,6 @@
 .galleryCard {
-  background-image: url("../../assets/ffflux.svg");
-  background-size: cover;
+  /* background-image: url("../../assets/ffflux.svg"); */
+  /* background-size: cover; */
   min-height: 80%;
   display: flex;
   flex-direction: column;
@@ -12,10 +12,17 @@
     "Fira Sans Condensed", sans-serif;
   font-size: calc(1.5rem + 3.5vw);
 }
+.detailsAndButtons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .galleryCard .userDetails {
   background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   padding: 10px 0px;
   margin: 10px 10px;
+  width: 50%;
 }
 .galleryCard .userDetails h2 {
   color: var(--white);
@@ -31,57 +38,74 @@
 .galleryCard a {
   color: rgb(230, 124, 124);
 }
-
-/* Image Cards */
-.galleryFilter p{
-  color: #FFFFFF;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.galleryFilter, .orderButton{
+  display: grid;
+  /* width: 15%; */
+  /* flex-direction: column; */
 }
+.reverseIcon{
+  width: 20px;
+  height: 20px;
+}
+.orderButton p,
+.galleryFilter p {
+  color: #ffffff;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 12px;
+  margin: 0.1rem 0;
+}
+.reverseButton,
 .galleryFilter button {
-    
-    background-color: #EA4C89;
-    border-radius: 8px;
-    border-style: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    height: 40px;
-    line-height: 20px;
-    list-style: none;
-    margin: 0.5rem;
-    outline: none;
-    padding: 10px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .galleryFilter button:hover,
-  .galleryFilter button:focus {
-    background-color: #F082AC;
-  }
+  background-color: #e53131;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  height: 30px;
+  /* line-height: 15px; */
+  list-style: none;
+  margin: 0.1rem 0.5rem;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
+.orderButton button:hover,
+.orderButton button:focus,
+.galleryFilter button:hover,
+.galleryFilter button:focus {
+  background-color: #c42e2e;
+}
+/* Image Cards */
 
-.imageContainer{
+.imageContainer {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 10px 10px;
 }
-.imagePair img{
+.imagePair img {
   max-width: 45%;
   padding: 1rem;
 }
-.imageContainer p{
+.imageContainer p {
   color: var(--red-white);
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: calc(0.3rem + 1.2vw);
@@ -91,11 +115,12 @@
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: calc(0.6rem + 0.8vw);
 }
-.galleryItem{
+.galleryItem {
   background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
   margin: 10px 10px;
 }
-.galleryItem hr{
+.galleryItem hr {
   color: var(--white);
   margin: 1rem 5rem;
 }

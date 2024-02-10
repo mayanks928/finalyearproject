@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import CSRFToken from "../CSRFToken";
 import Row from "react-bootstrap/Row";
+import PageTransition from "../../PageTransition";
 
 // eslint-disable-next-line react/prop-types
 const Register = ({ register, isAuthenticated }) => {
@@ -66,97 +67,106 @@ const Register = ({ register, isAuthenticated }) => {
       // We got errors!
       setErrors(newErrors);
     } else {
-      register(email, password, confirmPassword, firstName, lastName,setAccountCreated);
+      register(
+        email,
+        password,
+        confirmPassword,
+        firstName,
+        lastName,
+        setAccountCreated
+      );
     }
   }
   if (isAuthenticated) return <Navigate to="/" />;
   else if (accountCreated) return <Navigate to="/login" />;
 
   return (
-    <div className="registrationCard">
-      <div className="registrationForm">
-        <Form onSubmit={handleSubmitForSignup}>
-          <CSRFToken />
-          <Row>
-            <Col md>
-          <Form.Group className="mb-5">
-            {/* <Form.Label>First Name</Form.Label> */}
-            <Form.Control
-              type="text"
-              onChange={handleInputChangeForSignup}
-              name="firstName"
-              placeholder="First name"
-              isInvalid={!!errors.firstName}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.firstName}
-            </Form.Control.Feedback>
-          </Form.Group>
-          </Col>
-          <Col md>
-          <Form.Group className="mb-5">
-            {/* <Form.Label>Last Name</Form.Label> */}
-            <Form.Control
-              type="text"
-              onChange={handleInputChangeForSignup}
-              name="lastName"
-              placeholder="Last name"
-              isInvalid={!!errors.lastName}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.lastName}
-            </Form.Control.Feedback>
-          </Form.Group>
-          </Col>
-          </Row>
-          <Form.Group className="mb-5">
-            {/* <Form.Label>Email Id</Form.Label> */}
-            <Form.Control
-              type="email"
-              onChange={handleInputChangeForSignup}
-              name="email"
-              placeholder="Email ID"
-              isInvalid={!!errors.email}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.email}
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-5">
-            {/* <Form.Label>Password</Form.Label> */}
-            <Form.Control
-              type="password"
-              onChange={handleInputChangeForSignup}
-              name="password"
-              placeholder="Password"
-              minLength={8}
-              isInvalid={!!errors.password}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.password}
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-5">
-            {/* <Form.Label>Confirm Password</Form.Label> */}
-            <Form.Control
-              type="password"
-              onChange={handleInputChangeForSignup}
-              name="confirmPassword"
-              placeholder="Re-Enter Password"
-              minLength={8}
-              isInvalid={!!errors.confirmPassword}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.confirmPassword}
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Button type="submit">Create Account</Button>
-        </Form>
+    <PageTransition>
+      <div className="registrationCard">
+        <div className="registrationForm">
+          <Form onSubmit={handleSubmitForSignup}>
+            <CSRFToken />
+            <Row>
+              <Col md>
+                <Form.Group className="mb-5">
+                  {/* <Form.Label>First Name</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    onChange={handleInputChangeForSignup}
+                    name="firstName"
+                    placeholder="First name"
+                    isInvalid={!!errors.firstName}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.firstName}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Col>
+              <Col md>
+                <Form.Group className="mb-5">
+                  {/* <Form.Label>Last Name</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    onChange={handleInputChangeForSignup}
+                    name="lastName"
+                    placeholder="Last name"
+                    isInvalid={!!errors.lastName}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.lastName}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group className="mb-5">
+              {/* <Form.Label>Email Id</Form.Label> */}
+              <Form.Control
+                type="email"
+                onChange={handleInputChangeForSignup}
+                name="email"
+                placeholder="Email ID"
+                isInvalid={!!errors.email}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-5">
+              {/* <Form.Label>Password</Form.Label> */}
+              <Form.Control
+                type="password"
+                onChange={handleInputChangeForSignup}
+                name="password"
+                placeholder="Password"
+                minLength={8}
+                isInvalid={!!errors.password}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.password}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-5">
+              {/* <Form.Label>Confirm Password</Form.Label> */}
+              <Form.Control
+                type="password"
+                onChange={handleInputChangeForSignup}
+                name="confirmPassword"
+                placeholder="Re-Enter Password"
+                minLength={8}
+                isInvalid={!!errors.confirmPassword}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.confirmPassword}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Button type="submit">Create Account</Button>
+          </Form>
+        </div>
+        <div className="registrationText enlarge-shrink-text">
+          <p>Create an account to get started</p>
+        </div>
       </div>
-      <div className="registrationText enlarge-shrink-text">
-        <p>Create an account to get started</p>
-      </div>
-    </div>
+    </PageTransition>
   );
 };
 const mapStateToProps = (state) => ({

@@ -1,6 +1,6 @@
-.myNavBar {
+/* .myNavBar {
   background-color: var(--black);
-}
+} */
 .navitems > a,
 .navitems div {
   font-family: "Electrolize", sans-serif;
@@ -13,7 +13,7 @@
 .navitems a:hover,
 .navitems div:hover,
 .navitems > .show {
-  color: var(--red) !important;
+  color: rgb(249, 92, 92) !important;
 }
 
 .nav-link.active{
@@ -29,7 +29,7 @@
   padding: 0 10%;
 }
 .brand > h1 {
-  color: var(--red);
+  color: var(--white);
   text-align: center;
   font-weight: 700;
   font-size: 2rem;
@@ -38,4 +38,6 @@
 .brand > img.logo {
   max-width: 100px;
   max-height: 100px;
+  -webkit-filter: drop-shadow(0 5px 5px #ffffff);
+  filter: drop-shadow(0 5px 5px #ffffff);
 }

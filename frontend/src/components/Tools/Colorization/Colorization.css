@@ -3,6 +3,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
   margin: 2vh 3vw;
+  font-family: "Electrolize", cursive;
 }
 .colorizationForm .form-group {
   background-color: rgba(255, 255, 255, 1);

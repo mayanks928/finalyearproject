@@ -7,35 +7,41 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import PageTransition from "../../../PageTransition";
 
 const AuthenticatedColorization = () => {
   const [inputImage, setinputImage] = useState(null);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   // const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/register`;
-  const apiUrl = `${import.meta.env.VITE_APP_API_URL}/imagehandling/image_process`;
+  const apiUrl = `${
+    import.meta.env.VITE_APP_API_URL
+  }/imagehandling/image_process`;
   const uploadImage = async (imageFile) => {
-    setLoading(true);
+    toast.info("Starting with image processing.");
+
     const formData = new FormData();
     formData.append("input_image", imageFile);
-    formData.append('taskName', "Colorization");
+    formData.append("taskName", "Colorization");
     try {
       const response = await axios.post(apiUrl, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "X-CSRFToken": Cookies.get("csrftoken"),
         },
-        withCredentials: true, 
+        withCredentials: true,
       });
       console.log(response.data);
-      setSuccess(true);
+
+      toast.success(
+        "Image Uploaded and Processed. Head to Gallery to check results."
+      );
     } catch (error) {
+      toast.error(`Error Loading. Try Again.`);
       // Handle errors
       console.error("Error uploading image:", error);
-      setLoading(false);
     }
   };
   // const [isSuccess, setIsSuccess] = useState(false);
@@ -83,8 +89,6 @@ const AuthenticatedColorization = () => {
       <div className="colorizationCard">
         <div className="colorizationForm">
           <Form onSubmit={handleSubmit}>
-            {loading && <div>Loading...</div>}
-            {success && <div>Image processed successfully! Reloading...</div>}
             <Form.Group className="mb-4 form-group">
               <Form.Label>Upload image to be colorized</Form.Label>
               {previewImage}
@@ -111,15 +115,17 @@ const AuthenticatedColorization = () => {
 };
 const Colorization = ({ isAuthenticated }) => {
   return (
-    <div className="toolCard">
-      {isAuthenticated ? (
-        <AuthenticatedColorization />
-      ) : (
-        <h2>
-          Please <Link to="/login">Login</Link> to Access this feature
-        </h2>
-      )}
-    </div>
+    <PageTransition>
+      <div className="toolCard">
+        {isAuthenticated ? (
+          <AuthenticatedColorization />
+        ) : (
+          <h2>
+            Please <Link to="/login">Login</Link> to Access this feature
+          </h2>
+        )}
+      </div>
+    </PageTransition>
   );
 };
 

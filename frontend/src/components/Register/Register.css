@@ -1,6 +1,6 @@
 .registrationCard {
-  background-image: url("../../assets/registration_bg.jpg");
-  background-size: cover;
+  /* background-image: url("../../assets/registration_bg.jpg"); */
+  /* background-size: cover; */
   padding: 2.5vh 0vw 1.5vh 1vw;
   display: flex;
   

@@ -34,11 +34,11 @@ const CSRFToken = () => {
     };
 
     fetchData();
-    console.log("set csrf token");
+    // console.log("set csrf token");
   }, []);
   useEffect(() => {
-    console.log("inside this:")
-    console.log(csrftoken);
+    // console.log("inside this:")
+    // console.log(csrftoken);
   }, [csrftoken]);
   return <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />;
 };

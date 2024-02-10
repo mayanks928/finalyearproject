@@ -2,9 +2,16 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Myimageslider from "../Myimageslider/Myimageslider";
+import DenoisedImg from "../../assets/home_denoised_500.png";
+import homeGray from "../../assets/rr_gray.png";
+import homeColor from "../../assets/rr_col.png";
+import inpaintingVid from "../../assets/inpainting_vid.mp4";
 import "./Home.css";
-export default function Home() {
+import PageTransition from "../../PageTransition"
+
+const Home = () => {
   return (
+    <PageTransition>
     <Container fluid>
       <Row className="homeCardParent py-4 justify-content-md-center">
         <Col
@@ -17,22 +24,20 @@ export default function Home() {
             <p>
               Enhance the clarity of your images with our AI-driven image
               processing techniques. Whether your image is too noisy or you
-              require a higher resolution, let our models transform
-              your visuals to meet your exact specifications. Elevate the
-              quality of your images with our cutting-edge technology.
+              require a higher resolution, let our models transform your visuals
+              to meet your exact specifications. Elevate the quality of your
+              images with our cutting-edge technology.
             </p>
           </div>
         </Col>
-        <Col md={12} lg={5} className="homeImage1">
-          <Myimageslider
-            width={"auto"}
-            height={"600px"}
-            objectFit={"contain"}
-          />
+        <Col sm={6} lg={5} className="homeImage1 mx-auto">
+          <div className="imagesBefAndAft">
+            <img src={DenoisedImg} alt="" />
+          </div>
         </Col>
       </Row>
       <hr className="whiteHr" />
-      <Row className="py-4">
+      <Row className="py-4 alternateHomeCard">
         <Col md={12} lg={12}>
           <div className="textTitleDiv">
             <h2 className="textTitle">
@@ -64,21 +69,26 @@ export default function Home() {
         </Col>
       </Row>
       <hr className="whiteHr" />
-      <Row className="py-4">
-        <Col md={12} lg={4} className="homeImage1">
-          <Myimageslider width={"100%"} height={"auto"} objectFit={"contain"} />
+      <Row className="py-4 alternateHomeCard">
+        <Col xs={6} lg={3} className="homeImage1 mx-auto">
+          <Myimageslider
+            img1={homeGray}
+            img2={homeColor}
+            width={"100%"}
+            height={"auto"}
+            objectFit={"contain"}
+          />
         </Col>
         <Col
           md={12}
-          lg={8}
+          lg={7}
           className="d-flex flex-column justify-content-center align-items-center"
         >
           <div className="textTitleDiv2">
-            <h3>Unblur image with advanced AI</h3>
+            <h3>Vivid Colorization Enhancement</h3>
             <p>
-              Retouch and fix the blurry image using our advanced AI enhancement
-              technology. Its time to unblur image for a clearer, crisper, and
-              more precise result.
+              Add a splash of color to your monochrome memories using our
+              AI-driven colorization technology.
             </p>
           </div>
         </Col>
@@ -91,19 +101,26 @@ export default function Home() {
           className="d-flex flex-column justify-content-center align-items-center"
         >
           <div className="textTitleDiv2">
-            <h3>Unblur image with advanced AI</h3>
+            <h3>Inpainting with AI Magic</h3>
             <p>
-              Retouch and fix the blurry image using our advanced AI enhancement
-              technology. Its time to unblur image for a clearer, crisper, and
-              more precise result.
+              Say goodbye to imperfections in your images as our advanced AI
+              inpainting effortlessly restores and enhances, leaving you with
+              flawless and captivating visuals.
             </p>
           </div>
         </Col>
         <Col md={12} lg={4} className="homeImage1">
-          <Myimageslider width={"100%"} height={"auto"} objectFit={"contain"} />
+          <div className="inpaintingEgDiv">
+            <video autoPlay loop muted playsInline src={inpaintingVid}></video>
+          </div>
         </Col>
       </Row>
       <hr className="whiteHr" />
     </Container>
+    </PageTransition>
   );
-}
+};
+
+export default Home;
+
+

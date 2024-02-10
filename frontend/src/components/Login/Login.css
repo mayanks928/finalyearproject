@@ -1,11 +1,11 @@
 .loginCard {
-  background-image: url("../../assets/registration_bg.jpg");
-  background-size: cover;
+  /* background-image: url("../../assets/registration_bg.jpg"); */
+  /* background-size: cover; */
   padding: 2.5vh 0vw 1.5vh 1vw;
   display: flex;
 }
 .loginForm {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   padding: 10vh 8vw;
   width: 50%;
   height: 100vh;

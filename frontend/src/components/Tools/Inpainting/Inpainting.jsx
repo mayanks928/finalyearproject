@@ -7,35 +7,38 @@ import Cookies from "js-cookie";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
+import PageTransition from "../../../PageTransition";
 
 const AuthenticatedInpainting = () => {
   const [inputImage, setinputImage] = useState(null);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   // const apiUrl = `${import.meta.env.VITE_APP_API_URL}/accounts/register`;
-  const apiUrl = `${import.meta.env.VITE_APP_API_URL}/imagehandling/image_process`;
+  const apiUrl = `${
+    import.meta.env.VITE_APP_API_URL
+  }/imagehandling/image_process`;
   const uploadImage = async (imageFile) => {
-    setLoading(true);
+    toast.info("Starting with image processing.");
     const formData = new FormData();
     formData.append("input_image", imageFile);
-    formData.append('taskName', "Super Resolution");
+    formData.append("taskName", "Inpainting");
     try {
       const response = await axios.post(apiUrl, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "X-CSRFToken": Cookies.get("csrftoken"),
         },
-        withCredentials: true, 
+        withCredentials: true,
       });
       console.log(response.data);
-      setSuccess(true);
+      toast.success(
+        "Image Uploaded and Processed. Head to Gallery to check results."
+      );
     } catch (error) {
       // Handle errors
       console.error("Error uploading image:", error);
-      setLoading(false);
     }
   };
   // const [isSuccess, setIsSuccess] = useState(false);
@@ -83,8 +86,6 @@ const AuthenticatedInpainting = () => {
       <div className="inpaintingCard">
         <div className="inpaintingForm">
           <Form onSubmit={handleSubmit}>
-            {loading && <div>Loading...</div>}
-            {success && <div>Image processed successfully! Reloading...</div>}
             <Form.Group className="mb-4 form-group">
               <Form.Label>Upload image that requires inpainting</Form.Label>
               {previewImage}
@@ -111,15 +112,17 @@ const AuthenticatedInpainting = () => {
 };
 const Inpainting = ({ isAuthenticated }) => {
   return (
-    <div className="toolCard">
-      {isAuthenticated ? (
-        <AuthenticatedInpainting/>
-      ) : (
-        <h2>
-        Please <Link to="/login">Login</Link> to Access this feature
-      </h2>
-      )}
-    </div>
+    <PageTransition>
+      <div className="toolCard">
+        {isAuthenticated ? (
+          <AuthenticatedInpainting />
+        ) : (
+          <h2>
+            Please <Link to="/login">Login</Link> to Access this feature
+          </h2>
+        )}
+      </div>
+    </PageTransition>
   );
 };
 
