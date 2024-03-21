@@ -13,14 +13,14 @@
 .navitems a:hover,
 .navitems div:hover,
 .navitems > .show {
-  color: rgb(249, 92, 92) !important;
+  color: var(--nav-hover) !important;
 }
 
 .nav-link.active{
-  color: var(--white) !important;
+  color: var(--text) !important;
 }
 .dropdown-item:active {
-  background-color: var(--black);
+  background-color: var(--sec-color1);
 }
 .brand {
   display: flex;
@@ -29,7 +29,7 @@
   padding: 0 10%;
 }
 .brand > h1 {
-  color: var(--white);
+  color: var(--text);
   text-align: center;
   font-weight: 700;
   font-size: 2rem;

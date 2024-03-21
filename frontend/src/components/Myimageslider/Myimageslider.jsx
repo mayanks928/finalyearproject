@@ -1,26 +1,21 @@
 import { ReactCompareSliderImage } from "react-compare-slider";
 import { ReactCompareSlider } from "react-compare-slider";
 import { ReactCompareSliderHandle } from "react-compare-slider";
-import { useState, useEffect } from "react";
 // import SampleImage from "../../assets/mountain.jpg";
 // import SampleImageNoised from "../../assets/mountainnoised.jpg";
 import "./Myimageslider.css";
 import PropTypes from "prop-types";
 export default function Myimageslider(props) {
-  const [showSlider, setShowSlider] = useState(false);
-  useEffect(() => {
-    setShowSlider(true);
-  }, []);
   return (
     <ReactCompareSlider
-      className={`homeSlider1 ${showSlider ? "show" : ""}`}
       handle={
         <ReactCompareSliderHandle
-          buttonStyle={{ display: "none" }}
+          // buttonStyle={{ display: "none" }}
+          style={{ color: "yellow" }}
           linesStyle={{ width: "1px" }}
         />
       }
-      changePositionOnHover={true}
+      // changePositionOnHover={true}
       boundsPadding={0}
       itemOne={
         <ReactCompareSliderImage

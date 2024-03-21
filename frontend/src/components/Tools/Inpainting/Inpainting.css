@@ -1,38 +1,63 @@
 .inpaintingForm {
-    padding: 0 0 1.5vh 0;
-    background-color: rgb(255, 255, 255);
-    border-radius: 8px;
-    margin: 2vh 3vw;
-    font-family: "Electrolize", cursive;
-  }
-  .inpaintingForm .form-group {
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 8px;
-  }
-  .inpaintingForm .form-label {
-    border-radius: 8px;
-    background-color: rgb(208, 195, 195);
-    width: 100%;
-    margin: 0;
-    padding: 2vh 0vh;
-    -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
-    -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
-    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
-  }
-  .inpaintingForm .form-control {
-    background-color: rgb(255, 255, 255);
-    margin: 0;
-    padding: 2vh 1.5vw;
-  }
-  .inpaintingForm .form-control.is-invalid {
-    border-color: rgb(223, 219, 219);
-  }
-  
-  .inpaintingForm .img-preview {
-    max-width: 50%;
-    max-height: 50%;
-    padding: 1vh 1vw;
-    margin: 1vh 0;
-    border: 1px solid black;
-  }
-  
+  padding: 0 0 1.5vh 0;
+  background-color: var(--white);
+  border-radius: 8px;
+  margin: 2vh 3vw;
+  font-family: "Electrolize", cursive;
+}
+.inpaintingForm .form-group {
+  background-color: var(--white);
+  border-radius: 8px;
+}
+.inpaintingForm .form-label {
+  border-radius: 8px;
+  background-color: var(--form-label);
+  width: 100%;
+  margin: 0;
+  padding: 2vh 0vh;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+}
+.inpaintingForm .form-control {
+  color: var(--text);
+  background-color: var(--white);
+  margin: 0;
+  padding: 2vh 1.5vw;
+}
+.inpaintingForm .form-control.is-invalid {
+  border-color: var(--form-label)
+}
+
+.inpaintingForm .img-preview {
+  padding: 1vh 1vw;
+  margin: 1vh 0;
+  border: 1px solid black;
+}
+.inpaintingForm .img-preview {
+  max-width: 50%;
+  max-height: 50%;
+  padding: 1vh 1vw;
+  margin: 1vh 0;
+  border: 1px solid black;
+}
+.inpaintingForm .drawingcanvas {
+  border: 1px solid black;
+  margin: 10px 2px;
+  padding: 10px 0;
+}
+
+.canvasElement {
+  padding: 1vh 1vw;
+  margin: 1vh 0;
+  border: 1px solid black;
+}
+.canvasDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.canvasButton{
+  margin: 0 5px;
+}

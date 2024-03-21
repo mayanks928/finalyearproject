@@ -1,17 +1,17 @@
 .colorizationForm {
   padding: 0 0 1.5vh 0;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--text);
   border-radius: 8px;
   margin: 2vh 3vw;
   font-family: "Electrolize", cursive;
 }
 .colorizationForm .form-group {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--text);
   border-radius: 8px;
 }
 .colorizationForm .form-label {
   border-radius: 8px;
-  background-color: rgb(208, 195, 195);
+  background-color: var(--form-label);
   width: 100%;
   margin: 0;
   padding: 2vh 0vh;

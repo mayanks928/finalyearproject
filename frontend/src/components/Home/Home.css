@@ -1,10 +1,42 @@
-.alternateHomeCard{
-    background-image: url("../../assets/ttten1.svg");
-    background-color: var(--black)
+.content {
+  /* border: 1px solid red; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.homeCard{
-    /* background-image: url("../../assets/ttten1.svg"); */
-    /* background-color: rgb(91, 19, 19); */
-    /* box-shadow: 0 0 20px 8px var(--black) inset; */
+.textTitleDiv > h2 {
+  padding: 3% 5%;
+  color: var(--text);
+  font-family: "Ostrich-Sans-Black", "Ostrich-Sans-Medium",
+    "Fira Sans Condensed", sans-serif;
+  font-size: calc(2rem + 3.5vw);
 }
+.textTitleDiv > p {
+  padding: 0% 5%;
+  color: var(--text2);
+  font-family: sans-serif;
+  font-size: calc(0.7rem + 0.5vw);
+}
+
+.textTitleDiv2 > h3 {
+  padding: 5% 5%;
+  color: var(--text);
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: bold;
+  font-size: calc(1.4rem + 2.7vw);
+}
+.textTitleDiv2 > p {
+  padding: 1% 5%;
+  color: var(--text2);
+  font-family: sans-serif;
+  /* font-size: calc(0.5rem + 1vw); */
+  font-size: calc(0.7rem + 0.5vw);
+}
+.alternateHomeCard {
+  background-image: url("../../assets/ttten1.svg");
+  background-color: var(--black);
+}
+

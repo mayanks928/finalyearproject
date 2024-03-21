@@ -7,17 +7,21 @@ import refreshIcon from "./refresh.svg";
 import gridIcon from "./grid.svg";
 import PageTransition from "../../PageTransition";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { motion,AnimatePresence } from "framer-motion";
+// import Col from "react-bootstrap/Col";
+import { AnimatePresence } from "framer-motion";
+import GalleryItem from "./GalleryItem";
+
 
 const Gallery = ({ isAuthenticated, userDetails }) => {
   const [galleryData, setGalleryData] = useState([]);
   const [currentGalleryData, setCurrentGalleryData] = useState([]);
-  const [display, setDisplay] = useState(false);
+  const [cgdChanged, setCgdChanged] = useState(false);
+  const [display, setDisplay] = useState(true);
   const reverseOrder = () => {
     // Update the galleryData by reversing the array
     const reversedData = [...currentGalleryData].reverse();
     setCurrentGalleryData(reversedData);
+    setCgdChanged(!cgdChanged);
   };
   const changeDisplay = () => {
     setDisplay(!display);
@@ -41,18 +45,7 @@ const Gallery = ({ isAuthenticated, userDetails }) => {
 
     fetchData(); // Call the fetchData function when the component mounts
   }, []);
-  const formatDateTime = (dateTimeString) => {
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-    };
 
-    return new Date(dateTimeString).toLocaleString(undefined, options);
-  };
   const toolsUsed = [...new Set(galleryData.map((item) => item.task_name))];
   const filterItem = (curcat) => {
     const newItem = galleryData.filter((newVal) => {
@@ -95,11 +88,11 @@ const Gallery = ({ isAuthenticated, userDetails }) => {
               </div>
               <div className="orderButton">
                 <p>Reverse Order:</p>
-                <button onClick={reverseOrder} className="reverseButton">
+                <button onClick={reverseOrder} className="galleryButton">
                   <img src={refreshIcon} className="reverseIcon" />
                 </button>
                 <p>Display Type:</p>
-                <button onClick={changeDisplay} className="reverseButton">
+                <button onClick={changeDisplay} className="galleryButton">
                   <img src={gridIcon} className="reverseIcon" />
                 </button>
               </div>
@@ -107,39 +100,9 @@ const Gallery = ({ isAuthenticated, userDetails }) => {
 
             <div className="galleryItem">
             <AnimatePresence mode="wait">
-              <Row className="py-4 justify-content-md-center" key={display}>
+              <Row className="py-4 justify-content-md-center galleryRow" key={[cgdChanged,display]}>
                 {currentGalleryData.map((item) => (
-                  <Col key={item.id} md={display ? "6" : "12"}>
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1,opacity:1 }}
-                      exit={{ scale: 1,opacity:0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div key={item.id} className="imageContainer">
-                        <p>{item.id}</p>
-                        <div className="imagePair">
-                          {" "}
-                          <img
-                            src={"http://localhost:8000/" + item.input_image}
-                            // src={item.input_image}
-                            alt={`Input ${item.id}`}
-                          />
-                          <img
-                            src={"http://localhost:8000/" + item.output_image}
-                            // src={item.output_image}
-                            alt={`Output ${item.id}`}
-                          />
-                        </div>
-
-                        <div className="details">
-                          <p>Tool: {item.task_name}</p>
-                          <p>Created At: {formatDateTime(item.created_at)}</p>
-                        </div>
-                        <hr />
-                      </div>
-                    </motion.div>
-                  </Col>
+                  <GalleryItem key={item.id} item={item} display={display} />
                 ))}
               </Row>
               </AnimatePresence>

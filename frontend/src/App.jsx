@@ -5,8 +5,9 @@ import Home from "./components/Home/Home";
 import NavBar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import Colorization from "./components/Tools/Colorization/Colorization";
-import SuperResolution from "./components/Tools/SuperResolution/SuperResolution";
+// import Colorization from "./components/Tools/Colorization/Colorization";
+// import SuperResolution from "./components/Tools/SuperResolution/SuperResolution";
+import ImageRestoration from "./components/Tools/ImageRestoration/ImageRestoration";
 import Inpainting from "./components/Tools/Inpainting/Inpainting";
 import Gallery from "./components/Gallery/Gallery";
 import Layout from "./components/Layout/Layout";
@@ -21,17 +22,18 @@ function App() {
   return (
     <Provider store={store}>
       <Layout>
-        <NavBar/>
+        <NavBar />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route exact path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<Register />} />
-            <Route path="/colorization" element={<Colorization />} />
-            <Route path="/superresolution" element={<SuperResolution />} />
+            {/* <Route path="/colorization" element={<Colorization />} />
+            <Route path="/superresolution" element={<SuperResolution />} /> */}
             <Route path="/inpainting" element={<Inpainting />} />
             <Route path="/gallery" element={<Gallery />} />
-            
+            <Route path="/image_restoration" element={<ImageRestoration />} />
+            image_restoration
           </Routes>
         </AnimatePresence>
         <ToastContainer

@@ -7,7 +7,7 @@
   /* justify-content: center; */
 }
 .galleryCard .guest h2 {
-  color: var(--white);
+  color: var(--text);
   font-family: "Ostrich-Sans-Black", "Ostrich-Sans-Medium",
     "Fira Sans Condensed", sans-serif;
   font-size: calc(1.5rem + 3.5vw);
@@ -16,12 +16,13 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
-.galleryCard .userDetails {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   padding: 10px 0px;
   margin: 10px 10px;
+  color: var(--white);
+}
+.galleryCard .userDetails {
   width: 50%;
 }
 .galleryCard .userDetails h2 {
@@ -31,37 +32,38 @@
   font-size: calc(2.5rem + 2.5vw);
 }
 .galleryCard .userDetails p {
-  color: var(--red-white);
+  color: var(--white);
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: calc(0.3rem + 1.2vw);
 }
 .galleryCard a {
-  color: rgb(230, 124, 124);
+  color: var(--sec-color);
 }
-.galleryFilter, .orderButton{
+.galleryFilter,
+.orderButton {
   display: grid;
   /* width: 15%; */
   /* flex-direction: column; */
 }
-.reverseIcon{
+.reverseIcon {
   width: 20px;
   height: 20px;
 }
 .orderButton p,
 .galleryFilter p {
-  color: #ffffff;
+  color: var(--white);
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
   font-size: 12px;
   margin: 0.1rem 0;
 }
-.reverseButton,
+.galleryButton,
 .galleryFilter button {
-  background-color: #e53131;
+  color: var(--white);
+  background-color: transparent;
+  border-color: var(--sec-color);
   border-radius: 8px;
-  border-style: none;
   box-sizing: border-box;
-  color: #ffffff;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -86,12 +88,51 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+.galleryItemButton {
+  width: 70px;
+  background-color: var(--sec-color);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  height: 30px;
+  /* line-height: 15px; */
+  list-style: none;
+  margin: 0.1rem 0.5rem;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.galleryItemButton.sliderClicked {
+  background-color: var(--button-clicked);
+  border: 1px solid var(--sec-color1);
+}
 
 .orderButton button:hover,
 .orderButton button:focus,
 .galleryFilter button:hover,
 .galleryFilter button:focus {
-  background-color: #c42e2e;
+  background-color: var(--button-hover);
+}
+
+.galleryRow {
+  align-items: flex-end;
 }
 /* Image Cards */
 
@@ -100,18 +141,20 @@
   flex-direction: column;
   padding: 1rem;
   margin: 10px 10px;
+  align-items: center;
 }
 .imagePair img {
   max-width: 45%;
+  max-height: 100vh;
   padding: 1rem;
 }
 .imageContainer p {
-  color: var(--red-white);
+  color: var(--white);
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: calc(0.3rem + 1.2vw);
 }
 .imageContainer .details p {
-  color: var(--red-white);
+  color: var(--white);
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: calc(0.6rem + 0.8vw);
 }
@@ -121,6 +164,6 @@
   margin: 10px 10px;
 }
 .galleryItem hr {
-  color: var(--white);
+  color: var(--text);
   margin: 1rem 5rem;
 }

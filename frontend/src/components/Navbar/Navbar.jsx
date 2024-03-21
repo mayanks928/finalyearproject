@@ -25,11 +25,17 @@ const container = {
   },
 };
 const item = {
-  initial: { rotate: -90, opacity: 0.1, scaleY: 0 },
+  initial: { 
+    // rotate: -90, 
+    opacity: 0.1, scaleY: 0 },
   animate: {
     scaleY: 1,
-    rotate: 0,
+    // rotate: 0,
     opacity: 1,
+    transition:{
+      repeat:Infinity,
+      repeatDelay: 6,
+    }
   },
 };
 const NavBar = ({ logout, isAuthenticated }) => {
@@ -80,13 +86,6 @@ const NavBar = ({ logout, isAuthenticated }) => {
             <Navbar.Brand as={Link} to="/">
               <div className="brand">
                 <motion.img
-                  animate={{ y: -10 }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 0.4,
-                    repeatDelay: 1.5,
-                    type:"spring",
-                  }}
                   className="logo"
                   src={Logo}
                   alt="Picture Perfect Logo"
@@ -115,7 +114,7 @@ const NavBar = ({ logout, isAuthenticated }) => {
                         className="animateitem"
                         variants={item}
                         key={index}
-                        style={{ display: "inline-block" }}
+                        // style={{ display: "inline-block" }}
                       >
                         {character}
                       </motion.span>
@@ -131,14 +130,17 @@ const NavBar = ({ logout, isAuthenticated }) => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto navitems">
                 <NavDropdown title="Tools" id="basic-nav-dropdown">
-                  <NavDropdown.Item as={Link} to="/colorization">
+                  {/* <NavDropdown.Item as={Link} to="/colorization">
                     Colorization
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/superresolution">
                     Super Resolution
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                   <NavDropdown.Item as={Link} to="/inpainting">
                     Inpainting
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/image_restoration">
+                    Image Restoration
                   </NavDropdown.Item>
                 </NavDropdown>
                 {isAuthenticated ? AuthLinks : GuestLinks}

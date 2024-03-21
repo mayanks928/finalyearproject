@@ -1,0 +1,39 @@
+.imageRestorationForm {
+  padding: 0 0 1.5vh 0;
+  background-color: var(--white);
+  border-radius: 8px;
+  margin: 2vh 3vw;
+  font-family: "Electrolize", cursive;
+}
+.imageRestorationForm .form-group {
+  background-color: var(--white);
+  border-radius: 8px;
+}
+.imageRestorationForm .form-label {
+  border-radius: 8px;
+  background-color: var(--form-label);
+  width: 100%;
+  margin: 0;
+  padding: 2vh 0vh;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.44);
+}
+.imageRestorationForm .form-control {
+  background-color: var(--white);
+  color: var(--text);
+  margin: 0;
+  padding: 2vh 1.5vw;
+}
+.imageRestorationForm .form-control.is-invalid {
+  border-color: var(--form-label);
+}
+
+.imageRestorationForm .img-preview {
+  max-width: 50%;
+  max-height: 50%;
+  padding: 1vh 1vw;
+  margin: 1vh 0;
+  border: 1px solid black;
+}
+
