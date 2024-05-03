@@ -1,0 +1,5 @@
+# Ignore all files in the folder
+media/*
+
+# Except the folder itself
+!media/

@@ -8,9 +8,11 @@ import { toast } from "react-toastify";
 import { useRef } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { Modal, Button } from "react-bootstrap";
 
 export default function GalleryItem(props) {
   // console.log(props.item);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [sliderDisplay, setSliderDisplay] = useState(false);
   const formatDateTime = (dateTimeString) => {
     const options = {
@@ -34,13 +36,12 @@ export default function GalleryItem(props) {
     try {
       await axios.delete(`${apiUrl}/${imageId}`, {
         headers: {
-          'X-CSRFToken': Cookies.get("csrftoken"),
+          "X-CSRFToken": Cookies.get("csrftoken"),
         },
         withCredentials: true,
       });
       toast.update(toastId.current, {
-        render:
-          "Image deleted successfully.",
+        render: "Image deleted successfully. Changes reflected on page reload.",
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         closeButton: true,
@@ -59,6 +60,12 @@ export default function GalleryItem(props) {
       });
       // console.error("Error deleting image:", error);
     }
+  };
+  const handleDelete = () => {
+    // Call the deleteItem function if user confirms
+    deleteItem(props.item.id);
+    // Close the confirmation modal
+    setShowConfirmation(false);
   };
   return (
     <Col key={props.item.id} md={props.display ? "6" : "12"}>
@@ -96,11 +103,34 @@ export default function GalleryItem(props) {
             <p>Tool: {props.item.task_name}</p>
             <p>Created At: {formatDateTime(props.item.created_at)}</p>
           </div>
-          <button onClick={()=>{
-            deleteItem(props.item.id);
-          }} className="galleryItemButton">
+          <button
+            onClick={() => {
+              setShowConfirmation(true);
+            }}
+            className="galleryItemButton"
+          >
             <img src={trashIcon} className="reverseIcon" />
           </button>
+          <Modal
+            show={showConfirmation}
+            onHide={() => setShowConfirmation(false)}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Confirm Deletion</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => setShowConfirmation(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="danger" onClick={handleDelete}>
+                Delete
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <button
             onClick={() => {
               setSliderDisplay(!sliderDisplay);

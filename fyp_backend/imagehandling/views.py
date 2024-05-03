@@ -12,7 +12,9 @@ import base64
 from io import BytesIO
 from PIL import Image
 
-FAST_API_URL = 
+# Server url here. Uncomment the below line after setting url
+# FAST_API_URL = "https://b728-34-168-171-247.ngrok-free.app"
+
 
 def apply_mask_to_image(input_image, mask_data_url):
     # Load the input image
